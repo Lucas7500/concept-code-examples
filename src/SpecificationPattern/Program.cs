@@ -14,7 +14,7 @@ serviceBefore.ReleaseCreditLimit(eligibleCustomer);
 
 Console.WriteLine($"Before Pattern - {eligibleCustomer.Name}: {eligibleCustomer.CreditLimit:C}");
 
-eligibleCustomer.CreditLimit = 0; // Reset
+eligibleCustomer.CreditLimit = 0;
 
 var serviceAfter = new CustomerServiceAfter();
 serviceAfter.ReleaseCreditLimit(eligibleCustomer);

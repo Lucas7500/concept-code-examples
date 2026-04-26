@@ -1,7 +1,7 @@
 namespace SpecificationPattern.Models;
 
 /// <summary>
-/// Represents a customer in the system.
+/// Aggregates the financial and history data needed to evaluate credit specifications.
 /// </summary>
 internal class Customer
 {

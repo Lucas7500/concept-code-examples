@@ -1,9 +1,11 @@
-﻿using SpecificationPattern.Models;
+using SpecificationPattern.Models;
 
-namespace SpecificationPattern.Contracts
+namespace SpecificationPattern.Contracts;
+
+/// <summary>
+/// Defines the capability of releasing credit limits, abstracted to compare different implementation strategies.
+/// </summary>
+internal interface ICustomerService
 {
-    internal interface ICustomerService
-    {
-        void ReleaseCreditLimit(Customer customer);
-    }
+    void ReleaseCreditLimit(Customer customer);
 }

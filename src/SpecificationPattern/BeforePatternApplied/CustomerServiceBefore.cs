@@ -1,3 +1,4 @@
+using SpecificationPattern.Constants;
 using SpecificationPattern.Contracts;
 using SpecificationPattern.Models;
 
@@ -5,7 +6,7 @@ namespace SpecificationPattern.BeforePatternApplied;
 
 /// <summary>
 /// Traditional implementation with hardcoded rules and private methods.
-/// Standardized with expression-bodied members.
+/// Refactored to use CreditRules constants for both thresholds and multipliers.
 /// </summary>
 internal sealed class CustomerServiceBefore : ICustomerService
 {
@@ -16,28 +17,32 @@ internal sealed class CustomerServiceBefore : ICustomerService
         
         var now = DateTime.UtcNow;
 
-        if (IsShortTermCustomer(now, customer))
-            customer.CreditLimit = customer.Income * 0.9m;
-        
-        if (IsMidTermCustomer(now, customer))
-            customer.CreditLimit = customer.Income * 1.5m;
-
         if (IsLongTermCustomer(now, customer))
-            customer.CreditLimit = customer.Income * 3.0m;
+        {
+            customer.CreditLimit = customer.Income * CreditRules.LongTermCreditMultiplier;
+        }
+        else if (IsMidTermCustomer(now, customer))
+        {
+            customer.CreditLimit = customer.Income * CreditRules.MidTermCreditMultiplier;
+        }
+        else if (IsShortTermCustomer(now, customer))
+        {
+            customer.CreditLimit = customer.Income * CreditRules.ShortTermCreditMultiplier;
+        }
     }
 
-    public static bool CanGetCreditLimit(Customer client) =>
+    public bool CanGetCreditLimit(Customer client) =>
         client.IsActive
-            && client.Score > 500
-            && !client.HasDebt
-            && client.Income > 1000;
+        && client.Score > CreditRules.MinimumCreditScore
+        && !client.HasDebt
+        && client.Income > CreditRules.MinimumMonthlyIncome;
 
     private static bool IsShortTermCustomer(DateTime now, Customer client) =>
-        client.AccountCreationDate < now.AddYears(-1);
+        client.AccountCreationDate <= now.AddYears(-CreditRules.ShortTermYearsThreshold);
     
     private static bool IsMidTermCustomer(DateTime now, Customer client) =>
-        client.AccountCreationDate < now.AddYears(-3);
+        client.AccountCreationDate <= now.AddYears(-CreditRules.MidTermYearsThreshold);
 
     private static bool IsLongTermCustomer(DateTime now, Customer client) =>
-        client.AccountCreationDate < now.AddYears(-5);
+        client.AccountCreationDate <= now.AddYears(-CreditRules.LongTermYearsThreshold);
 }

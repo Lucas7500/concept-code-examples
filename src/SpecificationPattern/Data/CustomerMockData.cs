@@ -15,7 +15,7 @@ internal static class CustomerMockData
         HasDebt = false,
         Income = 5000,
         Score = 700,
-        AccountCreationDate = DateTime.UtcNow.AddYears(-6) // Long term (> 5 years)
+        AccountCreationDate = DateTime.UtcNow.AddYears(-6)
     };
 
     public static Customer CreateIneligibleDebtCustomer() => new()
@@ -25,7 +25,7 @@ internal static class CustomerMockData
         HasDebt = true,
         Income = 800,
         Score = 400,
-        AccountCreationDate = DateTime.UtcNow.AddYears(-2) // Mid term (between 1 and 3 years)
+        AccountCreationDate = DateTime.UtcNow.AddYears(-2)
     };
 
     public static Customer CreateActiveHighIncomeCustomer() => new()
@@ -35,6 +35,6 @@ internal static class CustomerMockData
         HasDebt = false,
         Income = 10000,
         Score = 850,
-        AccountCreationDate = DateTime.UtcNow.AddMonths(-6) // Short term (< 1 year)
+        AccountCreationDate = DateTime.UtcNow.AddMonths(-6)
     };
 }
