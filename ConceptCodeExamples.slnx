@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/SpecificationPattern/SpecificationPattern.csproj" Id="6bc42e75-42b4-4731-8059-a8db31503132" />
+    <Project Path="src/PolicyPattern/PolicyPattern.csproj" Id="e2f4a56c-1234-4321-8888-9db31503132a" />
   </Folder>
 </Solution>

@@ -6,7 +6,7 @@ A virtual knowledge library of Software Engineering concepts.
 *   Author Profile: Software Engineering Student & Mid-level Backend Developer (C#/.NET).
 *   Primary Goal: Educational repository demonstrating patterns and architectural concepts through practical, high-quality code examples.
 
-## Core Directives (The 10 Laws)
+## Core Directives (The 11 Laws)
 1.  Comparative Analysis: Implementations MUST show "Before" (Anti-pattern/Naive) vs. "After" (Pattern applied).
 2.  Project Isolation: Each concept MUST have its own dedicated project.
 3.  Depth of Exploration: Provide multiple scenarios for a single concept if it helps clarify different applications (e.g., Simple vs. Composite).
@@ -19,6 +19,7 @@ A virtual knowledge library of Software Engineering concepts.
 8.  Strict Verification: NEVER assume context. If a requirement is missing or ambiguous, the AI MUST ask for clarification.
 9.  Internalized Logic: Prioritize native C#/.NET features. Avoid external dependencies/NuGet packages unless essential for the concept.
 10. Supplemental Context: The additional_context folder is essential when one or more files need to be passed to the agent to provide extra information or context.
+11. Documentation Naming: Do not generate concept-specific filenames (e.g., CONCEPT.md). Use README.md for the primary documentation of each project.
 
 ## Maintenance and Persistence Protocols
 1.  Immediate Update: Any change made to the project that directly affects the definitions or memory stored in GEMINI.md must trigger an immediate update of the file to ensure consistency.
@@ -38,7 +39,7 @@ When implementing a new concept, follow this sequence:
 2.  Boilerplate: Create the project structure, Contracts, and Models.
 3.  The "Before": Implement the naive/problematic version.
 4.  The "After": Implement the pattern-based solution.
-5.  Documentation: Add XML tags and a README.md (or specific .md) for that concept.
+5.  Documentation: Add XML tags and a README.md for that concept.
 6.  Validation: Create a clean Program.cs for execution.
 
 ## Project Memory (Log)
@@ -46,7 +47,11 @@ When implementing a new concept, follow this sequence:
 *   Specification Pattern: 
     *   Implementation: Atomic specs combined via SpecificationExtensions (And, Or, Not).
     *   Features: Primary constructors, expression-bodied specs, Object Mother data.
-    *   Location: src/SpecificationPattern/
+    *   Location: src/SpecificationPattern/ (Doc: README.md)
+*   Policy Pattern:
+    *   Implementation: Abstracted volatile business rules into IDiscountPolicy implementations.
+    *   Features: Highest-discount resolution, switch-to-collection refactoring, Object Mother data.
+    *   Location: src/PolicyPattern/ (Doc: README.md)
 
 ### Planned Concepts
 *   (Waiting for user direction...)
